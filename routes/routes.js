@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const frontendController = require('../controllers/frontendController');
 const authController = require('../controllers/authController');
-const adminDashboard  = require('../controllers/adminController');
+const adminController  = require('../controllers/adminController');
 const { isAuthenticated, isAdmin } = require('../middleware/authMiddleware');
 
 // auth routes
@@ -19,6 +19,6 @@ router.get('/logout', authController.logout);
 router.get('/', frontendController.index);
 
 // admin routes
-router.get('/admin/dashboard',[isAuthenticated,isAdmin],adminDashboard.adminDashboard);
+router.get('/admin/dashboard',[isAuthenticated,isAdmin],adminController.adminDashboard);
 
 module.exports = router;
